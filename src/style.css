@@ -86,7 +86,8 @@ footer,
 .logo,
 .searched-location,
 .location-weather,
-.description-weather {
+.description-weather,
+.sun-wrapper {
   display: flex;
 }
 
@@ -94,6 +95,7 @@ body {
   height: 100%;
   flex-direction: column;
   align-items: stretch;
+  line-height: 1;
 }
 header,
 footer,
@@ -142,21 +144,45 @@ header {
 
 .about {
   font-size: 1.5rem;
-  /* margin-left: auto; */
 }
 
 main {
+  padding: var(--space-200);
   flex-direction: column;
   flex: 2;
+  gap: var(--space-200);
 }
-.searched-location {
-  flex: 1;
-  justify-content: center;
-  align-items: center;
+.carousel,
+.card {
+  border-radius: 25px;
 }
 
 .location-weather {
-  flex: 4;
+  gap: var(--space-300);
+  flex: 5;
+}
+
+.location-weather .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.location-weather .card div {
+  margin-inline: auto;
+  width: fit-content;
+}
+
+.temperature {
+  font-size: 4rem;
+}
+
+.condition {
+  font-size: 3rem;
+}
+
+.temperature-feels {
+  font-size: 2rem;
 }
 
 .card {
@@ -169,7 +195,33 @@ main {
 
 .description-weather {
   flex: 3;
+  gap: var(--space-100);
+}
+
+.description-weather .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.description-weather .card img {
+  width: 96px;
+  height: 96px;
+}
+
+.description-weather .card .title {
+  font-size: 1.8rem;
+}
+
+.description-weather .card .variable {
+  font-size: 1.5rem;
+}
+
+.sun-wrapper {
+  gap: 3rem;
 }
 footer {
+  flex: 0.1;
   justify-content: center;
 }
