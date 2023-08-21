@@ -11,6 +11,10 @@
   --clr-800: #075985;
   --clr-900: #0c4a6e;
   --clr-950: #082f49;
+
+  --space-100: 8px;
+  --space-200: 16px;
+  --space-300: 24px;
 }
 
 /* CSS RESET */
@@ -79,7 +83,8 @@ body,
 header,
 main,
 footer,
-.title,
+.logo,
+.searched-location,
 .location-weather,
 .description-weather {
   display: flex;
@@ -92,28 +97,66 @@ body {
 }
 header,
 footer,
-.title,
+.searched-location,
 .card,
 .carousel {
   border: 1px solid black;
 }
 
 header {
-  padding: 24px 16px;
-  justify-content: space-between;
-  border: 1px solid black;
+  padding: 0 var(--space-300);
+  align-items: center;
 }
+
+.logo {
+  gap: var(--space-100);
+  justify-content: center;
+  align-items: center;
+}
+.logo > img {
+  height: 100%;
+  width: 100%;
+}
+
+.logo p {
+  width: min-content;
+  line-height: 1;
+}
+
+.logo p span {
+  margin-left: 2px;
+}
+
+.name {
+  font-size: 3rem;
+}
+
+#search {
+  accent-color: black;
+  width: 700px;
+  margin: 0 auto;
+  font-size: 2rem;
+  height: 3rem;
+  /* flex-basis: 80%; */
+}
+
+.about {
+  font-size: 1.5rem;
+  /* margin-left: auto; */
+}
+
 main {
   flex-direction: column;
   flex: 2;
 }
-.title {
-  flex: 0.5;
+.searched-location {
+  flex: 1;
   justify-content: center;
+  align-items: center;
 }
 
 .location-weather {
-  flex: 2.5;
+  flex: 4;
 }
 
 .card {
@@ -125,7 +168,7 @@ main {
 }
 
 .description-weather {
-  flex: 1.5;
+  flex: 3;
 }
 footer {
   justify-content: center;
