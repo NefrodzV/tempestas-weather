@@ -86,6 +86,9 @@ footer,
 .logo,
 .searched-location,
 .location-weather,
+.carousel,
+.window,
+.forecast-card,
 .description-weather,
 .sun-wrapper {
   display: flex;
@@ -97,11 +100,14 @@ body {
   align-items: stretch;
   line-height: 1;
 }
+
 header,
 footer,
 .searched-location,
 .card,
-.carousel {
+.carousel,
+.window,
+.forecast-card {
   border: 1px solid black;
 }
 
@@ -139,7 +145,6 @@ header {
   margin: 0 auto;
   font-size: 2rem;
   height: 3rem;
-  /* flex-basis: 80%; */
 }
 
 .about {
@@ -191,8 +196,36 @@ main {
 
 .carousel {
   flex-basis: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
+.carousel .window {
+  width: 80%;
+  height: 80%;
+}
+
+.forecast-card {
+  width: 33.3%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-200);
+}
+
+.forecast-card div {
+  display: flex;
+  align-items: flex-end;
+}
+
+#forecast-title,
+#rain-percent {
+  font-size: 1.2rem;
+}
+#forecast-temperature {
+  font-size: 2rem;
+}
 .description-weather {
   flex: 3;
   gap: var(--space-100);
@@ -229,7 +262,7 @@ footer {
   gap: var(--space-100);
 }
 
-#discord-link {
+#discord-link img {
   cursor: pointer;
   height: 35px;
 }
