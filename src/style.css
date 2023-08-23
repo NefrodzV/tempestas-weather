@@ -222,14 +222,16 @@ main {
 }
 
 .carousel .window {
+  overflow: hidden;
   gap: var(--space-100);
-  width: 80%;
+  width: 735.46px;
   height: 80%;
 }
 
 .forecast-card {
   border-right: 1px solid black;
-  width: 33.3%;
+  width: 239.22px;
+  min-width: 239.22px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
