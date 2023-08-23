@@ -109,6 +109,7 @@ footer,
 .window,
 .forecast-card {
   border: 1px solid black;
+  /* box-shadow: 0px 0px 3px; */
 }
 
 header {
@@ -173,9 +174,20 @@ main {
   justify-content: center;
 }
 
-.location-weather .card div {
+.location-weather .card .body {
   margin-inline: auto;
   width: fit-content;
+}
+
+.card-header {
+  display: flex;
+  align-items: flex-end;
+  margin: 0;
+  margin-inline: 0;
+}
+
+#condition-image {
+  height: 150px;
 }
 
 .temperature {
@@ -202,16 +214,22 @@ main {
 }
 
 .carousel .window {
+  gap: var(--space-100);
   width: 80%;
   height: 80%;
 }
 
 .forecast-card {
+  border-right: 1px solid black;
   width: 33.3%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: var(--space-200);
+}
+
+.forecast-card:last-child {
+  border-right: none;
 }
 
 .forecast-card div {
