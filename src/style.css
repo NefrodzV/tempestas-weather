@@ -208,9 +208,13 @@ main {
 
 .carousel {
   flex-basis: 100%;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: var(--space-100);
+}
+.carousel button {
+  height: 50px;
+  width: 50px;
 }
 
 .carousel .window {
