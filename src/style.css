@@ -202,6 +202,10 @@ main {
   font-size: 2rem;
 }
 
+#location {
+  font-size: 1.2rem;
+}
+
 .card {
   flex-basis: 75%;
 }
