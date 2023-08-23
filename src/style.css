@@ -95,6 +95,7 @@ footer,
 }
 
 body {
+  color: var(--clr-950);
   height: 100%;
   flex-direction: column;
   align-items: stretch;
@@ -108,13 +109,14 @@ footer,
 .carousel,
 .window,
 .forecast-card {
-  border: 1px solid black;
-  /* box-shadow: 0px 0px 3px; */
 }
 
 header {
+  position: relative;
+  background-color: var(--clr-500);
   padding: 0 var(--space-300);
   align-items: center;
+  box-shadow: 0px 0px 6px var(--clr-950);
 }
 
 .logo {
@@ -141,11 +143,16 @@ header {
 }
 
 #search {
-  accent-color: black;
+  outline-offset: 1px;
+  background-color: var(--clr-200);
+  padding-inline: 1%;
+  border-radius: 25px;
+  border: none;
   width: 700px;
   margin: 0 auto;
   font-size: 2rem;
   height: 3rem;
+  box-shadow: 0px 0px 3px var(--clr-950) inset;
 }
 
 .about {
@@ -153,6 +160,7 @@ header {
 }
 
 main {
+  background-color: #bae6fd;
   padding: var(--space-200);
   flex-direction: column;
   flex: 2;
@@ -169,6 +177,10 @@ main {
 }
 
 .location-weather .card {
+  box-shadow: 0px 0px 6px var(--clr-950);
+
+  color: var(--clr-100);
+  background-color: var(--clr-500);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -217,29 +229,38 @@ main {
   gap: var(--space-100);
 }
 .carousel button {
+  background-color: var(--clr-200);
+  border: none;
   height: 50px;
   width: 50px;
 }
 
 .carousel .window {
   overflow: hidden;
-  gap: var(--space-100);
-  width: 735.46px;
+  gap: var(--space-200);
+  max-width: 737px;
   height: 80%;
 }
 
 .forecast-card {
-  border-right: 1px solid black;
-  width: 239.22px;
-  min-width: 239.22px;
+  margin: 1% 0px;
+  color: var(--clr-100);
+  background-color: var(--clr-500);
+  box-shadow: 0px 0px 6px var(--clr-950);
+  border-radius: 25px;
+  min-width: 230px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: var(--space-200);
 }
 
+.forecast-card:first-child {
+  margin-left: 1%;
+}
+
 .forecast-card:last-child {
-  border-right: none;
+  margin-right: 1%;
 }
 
 .forecast-card div {
@@ -260,6 +281,9 @@ main {
 }
 
 .description-weather .card {
+  background-color: var(--clr-50);
+  box-shadow: 0px 0px 3px var(--clr-950);
+  border-radius: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -283,6 +307,9 @@ main {
   gap: 3rem;
 }
 footer {
+  box-shadow: 0px 0px 6px var(--clr-950);
+  position: relative;
+  background-color: var(--clr-500);
   font-size: 1.2rem;
   flex: 0.1;
   justify-content: center;
