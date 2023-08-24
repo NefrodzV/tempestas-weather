@@ -15,6 +15,11 @@
   --space-100: 8px;
   --space-200: 16px;
   --space-300: 24px;
+
+  --clr-primary: var(--clr-400);
+  --clr-secondary: var(--clr-200);
+  --clr-light: var(--clr-100);
+  --clr-dark: var(--clr-950);
 }
 
 /* CSS RESET */
@@ -95,7 +100,7 @@ footer,
 }
 
 body {
-  color: var(--clr-950);
+  color: var(--clr-dark);
   height: 100%;
   align-items: stretch;
   line-height: 1;
@@ -111,10 +116,10 @@ main,
 
 header {
   position: relative;
-  background-color: var(--clr-500);
+  background-color: var(--clr-primary);
   padding: 0 var(--space-300);
   align-items: center;
-  box-shadow: 0px 0px 6px var(--clr-950);
+  box-shadow: 0px 0px 6px var(--clr-dark);
 }
 
 .logo {
@@ -143,7 +148,7 @@ header {
 
 #search {
   outline-offset: 1px;
-  background-color: var(--clr-200);
+  background-color: var(--clr-light);
   padding-inline: 1%;
   border-radius: 25px;
   border: none;
@@ -151,7 +156,7 @@ header {
   margin: 0 auto;
   font-size: 2rem;
   height: 3rem;
-  box-shadow: 0px 0px 3px var(--clr-950) inset;
+  box-shadow: 0px 0px 3px var(--clr-dark) inset;
 }
 
 .about {
@@ -175,9 +180,9 @@ main {
 }
 
 .location-weather .card {
-  box-shadow: 0px 0px 3px var(--clr-950);
-  color: var(--clr-100);
-  background-color: var(--clr-500);
+  box-shadow: 0px 0px 3px var(--clr-dark);
+  color: var(--clr-light);
+  background-color: var(--clr-primary);
   display: flex;
   justify-content: center;
 }
@@ -228,7 +233,7 @@ main {
   gap: var(--space-100);
 }
 .carousel button {
-  background-color: var(--clr-200);
+  background-color: var(--clr-secondary);
   border: none;
   height: 50px;
   width: 50px;
@@ -244,9 +249,9 @@ main {
 .forecast-card {
   margin: 1% 0px;
   font-weight: bold;
-  color: var(--clr-100);
-  background-color: var(--clr-500);
-  box-shadow: 0px 0px 6px var(--clr-950);
+  color: var(--clr-light);
+  background-color: var(--clr-primary);
+  box-shadow: 0px 0px 6px var(--clr-dark);
   border-radius: 25px;
   min-width: 230px;
   gap: var(--space-200);
@@ -280,7 +285,7 @@ main {
 
 .description-weather .card {
   background-color: var(--clr-50);
-  box-shadow: 0px 0px 3px var(--clr-950);
+  box-shadow: 0px 0px 3px var(--clr-dark);
   border-radius: 25px;
   display: flex;
   justify-content: center;
@@ -304,9 +309,9 @@ main {
   gap: 3rem;
 }
 footer {
-  box-shadow: 0px 0px 6px var(--clr-950);
+  box-shadow: 0px 0px 6px var(--clr-dark);
   position: relative;
-  background-color: var(--clr-500);
+  background-color: var(--clr-primary);
   font-size: 1.2rem;
   flex: 0.1;
   justify-content: center;
