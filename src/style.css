@@ -130,6 +130,7 @@ header {
 }
 
 .logo p {
+  font-weight: bolder;
   width: min-content;
   line-height: 1;
 }
@@ -177,7 +178,7 @@ main {
 }
 
 .location-weather .card {
-  box-shadow: 0px 0px 6px var(--clr-950);
+  box-shadow: 0px 0px 3px var(--clr-950);
 
   color: var(--clr-100);
   background-color: var(--clr-500);
@@ -244,6 +245,7 @@ main {
 
 .forecast-card {
   margin: 1% 0px;
+  font-weight: bold;
   color: var(--clr-100);
   background-color: var(--clr-500);
   box-shadow: 0px 0px 6px var(--clr-950);
@@ -265,7 +267,8 @@ main {
 
 .forecast-card div {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  gap: var(--space-100);
 }
 
 #forecast-title,
