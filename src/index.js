@@ -8,7 +8,13 @@ import sunsetSvg from "./assets/icons/icon-sunset.svg"
 import humiditySvg from "./assets/icons/icon-humidity.svg"
 import windsSvg from "./assets/icons/icon-winds.svg"
 
-import { getElement, isBlank, loadImage, showErrorMessage } from "./utils/Utils"
+import {
+  disableErrorMessage,
+  getElement,
+  isBlank,
+  loadImage,
+  showErrorMessage,
+} from "./utils/Utils"
 console.log("Hello Tempestas")
 
 // Setting the default images of the page
@@ -45,8 +51,16 @@ const handleEnter = (event) => {
   // TODO: Search the term
 }
 
+const handleInput = (event) => {
+  const parent = event.target
+  if (!parent.validity.valueMissing && !isBlank(parent.value)) {
+    disableErrorMessage(parent)
+  }
+}
+
 const searchInput = getElement("#search")
 searchInput.addEventListener("keydown", handleEnter)
+searchInput.addEventListener("input", handleInput)
 
 const buttonRight = getElement("#right")
 console.log(buttonRight)
