@@ -36,7 +36,7 @@ const handleEnter = (event) => {
     event.key === "Enter" &&
     (parent.validity.valueMissing || isBlank(parent.value))
   ) {
-    // showErrorMessage(parent)
+    showErrorMessage(parent, "Cannot search empty value")
     //reset the caret
     parent.value = ""
     return
