@@ -95,7 +95,8 @@ footer,
 .window,
 .forecast-card,
 .description-weather,
-.sun-wrapper {
+.sun-wrapper,
+.search-wrapper {
   display: flex;
 }
 
@@ -111,7 +112,8 @@ body,
 main,
 .location-weather .card,
 .description-weather .card,
-.forecast-card {
+.forecast-card,
+.search-wrapper {
   flex-direction: column;
 }
 
@@ -147,14 +149,18 @@ header {
   font-size: 3rem;
 }
 
+.search-wrapper {
+  position: relative;
+  width: 700px;
+  margin: 0 auto;
+}
 #search {
+  cursor: pointer;
   outline-offset: 1px;
   background-color: var(--clr-light);
   padding-inline: 1%;
   border-radius: 25px;
   border: none;
-  width: 700px;
-  margin: 0 auto;
   font-size: 2rem;
   height: 3rem;
   box-shadow: 0px 0px 3px var(--clr-dark) inset;
@@ -323,4 +329,34 @@ footer {
 #discord-link img {
   cursor: pointer;
   height: 35px;
+}
+
+/* Helpers */
+
+.error {
+  opacity: 0;
+
+  padding: 1%;
+  transition: all 500ms ease;
+  position: absolute;
+  width: max-content;
+  margin-left: 3%;
+  border: 1px solid red;
+  background-color: var(--clr-50);
+  color: red;
+  bottom: -2.2rem;
+  transform: scale(0);
+}
+
+.error:before {
+  position: absolute;
+  top: 0;
+  width: 50px;
+  background-color: blue;
+}
+
+.error[show] {
+  opacity: 1;
+  transform: scale(1);
+  width: auto;
 }
