@@ -264,10 +264,17 @@ main {
   gap: var(--space-100);
 }
 .carousel button {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  cursor: pointer;
   background-color: var(--clr-secondary);
   border: none;
   height: 50px;
   width: 50px;
+}
+.carousel button img {
+  width: 100%;
 }
 
 .carousel .window {
