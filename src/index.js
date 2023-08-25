@@ -36,12 +36,13 @@ const handleEnter = (event) => {
     event.key === "Enter" &&
     (parent.validity.valueMissing || isBlank(parent.value))
   ) {
-    showErrorMessage(parent)
+    // showErrorMessage(parent)
     //reset the caret
     parent.value = ""
+    return
   }
 
-  // Search the term
+  // TODO: Search the term
 }
 
 const searchInput = getElement("#search")
