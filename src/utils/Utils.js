@@ -14,9 +14,10 @@ const loadImage = (img, path) => {
   img.src = path
 }
 
-const showErrorMessage = (parent) => {
+const showErrorMessage = (parent, errorMessage) => {
   console.log(parent)
   const errorElement = parent.nextElementSibling
+  errorElement.textContent = errorMessage
   if (errorElement.hasAttribute("show")) return
   errorElement.toggleAttribute("show")
 }
