@@ -1,3 +1,5 @@
+import { CurrentWeather } from "../data/model/CurrentWeather"
+
 // Utility functions
 const getElement = (selector) => {
   const element = document.querySelector(selector)
@@ -26,4 +28,34 @@ const isBlank = (string) => {
   return string.trim() === ""
 }
 
-export { getElement, loadImage, showErrorMessage, disableErrorMessage, isBlank }
+const getCurrentWeatherFromJson = (response) => {
+  const currentWeather = new CurrentWeather(
+    response.location.name,
+    response.location.region,
+    response.location.localtime,
+    response.current.temp_f,
+    response.current.is_day,
+    response.current.condition.text,
+    response.current.condition.icon,
+    response.current.wind_mph,
+    response.current.humidity,
+    response.current.feelslike_f,
+    response.current.uv
+  )
+
+  return currentWeather
+}
+
+const roundNumber = (number) => {
+  return Math.round(number)
+}
+
+export {
+  getElement,
+  loadImage,
+  showErrorMessage,
+  disableErrorMessage,
+  isBlank,
+  getCurrentWeatherFromJson,
+  roundNumber,
+}
