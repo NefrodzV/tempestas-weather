@@ -16,7 +16,7 @@ export class CurrentWeather {
     this.city = city
     this.region = region
     this.localTime = localTime
-    this.temperatureCelsius = temperatureCelsius
+    this.temperatureCelsius = Math.round(temperatureCelsius)
     this.isDay = isDay
     this.condition = condition
     this.icon = icon
