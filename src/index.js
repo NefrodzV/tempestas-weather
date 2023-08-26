@@ -16,10 +16,10 @@ import {
   showErrorMessage,
 } from "./utils/Utils"
 import weatherObserver from "./weatherObserver"
-import { WeatherService } from "./WeatherService"
+import { ForecastService } from "./data/service/ForecastService"
 console.log("Hello Tempestas")
 
-const service = WeatherService
+const service = ForecastService
 
 // Setting the default images of the page
 const logoImage = getElement(".logo img")
@@ -53,7 +53,7 @@ const handleEnter = (event) => {
   }
 
   if (event.key === "Enter") {
-    service.getWeather(parent.value)
+    service.getForecast(parent.value)
     // weatherObserver.notify(parent.value)
     // TODO: Search the term
   }
