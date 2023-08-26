@@ -17,6 +17,7 @@ import {
 } from "./utils/Utils"
 import weatherObserver from "./weatherObserver"
 import { ForecastService } from "./data/service/ForecastService"
+import { Strings } from "./res/Strings"
 console.log("Hello Tempestas")
 
 const service = ForecastService
@@ -66,8 +67,28 @@ const handleInput = (event) => {
   }
 }
 
-const updateWeather = (weather) => {
-  console.log("Updating weather")
+const temperatureString = ``
+const updateWeather = (currentWeather) => {
+  const weatherLocationElement = {
+    temperaturePara: getElement(".temperature"),
+    conditionImage: getElement("#condition-image"),
+    conditionPara: getElement(".condition"),
+    temperatureFeelsPara: getElement(".temperature-feels"),
+    locationPara: getElement("#location"),
+  }
+
+  console.log(currentWeather)
+  weatherLocationElement.temperaturePara.textContent =
+    currentWeather.temperatureFarenheit + Strings.DEGREE_SYMBOL_HEX
+  // TODO: Display my own images for conditions
+  // weatherLocationElement.conditionImage.src = "https:" + currentWeather.icon
+
+  weatherLocationElement.conditionPara.textContent = currentWeather.condition
+  weatherLocationElement.temperatureFeelsPara.textContent =
+    "Feels like " +
+    currentWeather.feelsLikeFarenheit +
+    Strings.DEGREE_SYMBOL_HEX
+  weatherLocationElement.locationPara.textContent = `${currentWeather.city}, ${currentWeather.region}`
 }
 
 weatherObserver.subscribe(updateWeather)
