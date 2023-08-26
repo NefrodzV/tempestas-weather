@@ -75,6 +75,3 @@ weatherObserver.subscribe(updateWeather)
 const searchInput = getElement("#search")
 searchInput.addEventListener("keydown", handleEnter)
 searchInput.addEventListener("input", handleInput)
-
-const buttonRight = getElement("#right")
-console.log(buttonRight)
