@@ -1,28 +1,28 @@
+import { roundNumber } from "../../utils/Utils"
+
 export class CurrentWeather {
   constructor(
     city,
     region,
     localTime,
-    temperatureCelsius,
+    temperatureFarenheit,
     isDay,
     condition,
     icon,
     windsMph,
     humidity,
-    feelsLikeCelsius,
     feelsLikeFarenheit,
     uvIndex
   ) {
     this.city = city
     this.region = region
     this.localTime = localTime
-    this.temperatureCelsius = Math.round(temperatureCelsius)
+    this.temperatureFarenheit = roundNumber(temperatureFarenheit)
     this.isDay = isDay
     this.condition = condition
     this.icon = icon
     this.windsMph = windsMph
     this.humidity = humidity
-    this.feelsLikeCelsius = feelsLikeCelsius
     this.feelsLikeFarenheit = feelsLikeFarenheit
     this.uvIndex = uvIndex
   }
