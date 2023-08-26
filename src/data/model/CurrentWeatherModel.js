@@ -23,7 +23,7 @@ export class CurrentWeatherModel {
     this.isDay = isDay
     this.condition = condition
     this.icon = icon
-    this.windsMph = windsMph
+    this.windsMph = roundNumber(windsMph)
     this.humidity = humidity
     this.feelsLikeFarenheit = roundNumber(feelsLikeFarenheit)
     this.uvIndex = uvIndex
