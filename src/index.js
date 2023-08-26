@@ -32,6 +32,9 @@ const humidityImg = getElement("#humidity-img")
 const windsImg = getElement("#winds-img")
 const sunsetImg = getElement("#sunset-img")
 
+const getDefaultWeather = () => {
+  service.getForecast("London")
+}
 const handleEnter = (event) => {
   const parent = event.target
   if (
@@ -78,6 +81,8 @@ const updateWeather = (currentWeather) => {
 
 weatherObserver.subscribe(updateWeather)
 
+getDefaultWeather()
+
 loadImage(logoImage, logoSvg)
 loadImage(discordImage, discordSvg)
 loadImage(leftButtonImg, chevronLeftSvg)
@@ -86,6 +91,7 @@ loadImage(uvImage, uvSvg)
 loadImage(humidityImg, humiditySvg)
 loadImage(windsImg, windsSvg)
 loadImage(sunsetImg, sunsetSvg)
+
 const searchInput = getElement("#search")
 searchInput.addEventListener("keydown", handleEnter)
 searchInput.addEventListener("input", handleInput)
