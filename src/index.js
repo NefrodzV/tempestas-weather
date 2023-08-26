@@ -32,15 +32,6 @@ const humidityImg = getElement("#humidity-img")
 const windsImg = getElement("#winds-img")
 const sunsetImg = getElement("#sunset-img")
 
-loadImage(logoImage, logoSvg)
-loadImage(discordImage, discordSvg)
-loadImage(leftButtonImg, chevronLeftSvg)
-loadImage(rightButtonImg, chevronRightSvg)
-loadImage(uvImage, uvSvg)
-loadImage(humidityImg, humiditySvg)
-loadImage(windsImg, windsSvg)
-loadImage(sunsetImg, sunsetSvg)
-
 const handleEnter = (event) => {
   const parent = event.target
   if (
@@ -67,32 +58,34 @@ const handleInput = (event) => {
   }
 }
 
-const temperatureString = ``
 const updateWeather = (currentWeather) => {
-  const weatherLocationElement = {
-    temperaturePara: getElement(".temperature"),
-    conditionImage: getElement("#condition-image"),
-    conditionPara: getElement(".condition"),
-    temperatureFeelsPara: getElement(".temperature-feels"),
-    locationPara: getElement("#location"),
-  }
+  const temperaturePara = getElement(".temperature")
+  const conditionImage = getElement("#condition-image")
+  const conditionPara = getElement(".condition")
+  const temperatureFeelsPara = getElement(".temperature-feels")
+  const locationPara = getElement("#location")
 
-  console.log(currentWeather)
-  weatherLocationElement.temperaturePara.textContent =
+  temperaturePara.textContent =
     currentWeather.temperatureFarenheit + Strings.DEGREE_SYMBOL_HEX
-  // TODO: Display my own images for conditions
-  // weatherLocationElement.conditionImage.src = "https:" + currentWeather.icon
 
-  weatherLocationElement.conditionPara.textContent = currentWeather.condition
-  weatherLocationElement.temperatureFeelsPara.textContent =
+  conditionPara.textContent = currentWeather.condition
+  temperatureFeelsPara.textContent =
     "Feels like " +
     currentWeather.feelsLikeFarenheit +
     Strings.DEGREE_SYMBOL_HEX
-  weatherLocationElement.locationPara.textContent = `${currentWeather.city}, ${currentWeather.region}`
+  locationPara.textContent = `${currentWeather.city}, ${currentWeather.region}`
 }
 
 weatherObserver.subscribe(updateWeather)
 
+loadImage(logoImage, logoSvg)
+loadImage(discordImage, discordSvg)
+loadImage(leftButtonImg, chevronLeftSvg)
+loadImage(rightButtonImg, chevronRightSvg)
+loadImage(uvImage, uvSvg)
+loadImage(humidityImg, humiditySvg)
+loadImage(windsImg, windsSvg)
+loadImage(sunsetImg, sunsetSvg)
 const searchInput = getElement("#search")
 searchInput.addEventListener("keydown", handleEnter)
 searchInput.addEventListener("input", handleInput)
