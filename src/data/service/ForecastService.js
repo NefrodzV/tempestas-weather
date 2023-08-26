@@ -1,6 +1,5 @@
 import { getCurrentWeatherFromJson } from "../../utils/Utils"
 import weatherObserver from "../../weatherObserver"
-import { CurrentWeather } from "../model/CurrentWeather"
 
 export const ForecastService = (function createForecastService() {
   const KEY = "186407c1fe2c47229a5131447231908"

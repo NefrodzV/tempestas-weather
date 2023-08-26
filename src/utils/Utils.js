@@ -1,4 +1,4 @@
-import { CurrentWeather } from "../data/model/CurrentWeather"
+import { CurrentWeatherModel } from "../data/model/CurrentWeatherModel"
 
 // Utility functions
 const getElement = (selector) => {
@@ -29,7 +29,7 @@ const isBlank = (string) => {
 }
 
 const getCurrentWeatherFromJson = (response) => {
-  const currentWeather = new CurrentWeather(
+  const currentWeather = new CurrentWeatherModel(
     response.location.name,
     response.location.region,
     response.location.localtime,
@@ -40,7 +40,9 @@ const getCurrentWeatherFromJson = (response) => {
     response.current.wind_mph,
     response.current.humidity,
     response.current.feelslike_f,
-    response.current.uv
+    response.current.uv,
+    response.forecast.forecastday[0].astro.sunrise,
+    response.forecast.forecastday[0].astro.sunset
   )
 
   return currentWeather
