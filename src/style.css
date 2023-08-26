@@ -248,6 +248,7 @@ main {
 
 #location {
   font-size: 1.2rem;
+  width: 25ch;
 }
 
 .card {
