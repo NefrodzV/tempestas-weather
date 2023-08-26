@@ -15,7 +15,7 @@ import {
   loadImage,
   showErrorMessage,
 } from "./utils/Utils"
-import weather from "./weather"
+import weatherObserver from "./weatherObserver"
 console.log("Hello Tempestas")
 
 // Setting the default images of the page
@@ -50,7 +50,7 @@ const handleEnter = (event) => {
   }
 
   if (event.key === "Enter") {
-    weather.notify(parent.value)
+    weatherObserver.notify(parent.value)
   }
 
   // TODO: Search the term
@@ -67,7 +67,7 @@ const updateWeather = (weather) => {
   console.log("Updating weather")
 }
 
-weather.subscribe(updateWeather)
+weatherObserver.subscribe(updateWeather)
 
 const searchInput = getElement("#search")
 searchInput.addEventListener("keydown", handleEnter)
