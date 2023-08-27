@@ -15,7 +15,7 @@ import {
   loadImage,
   showErrorMessage,
 } from "./utils/Utils"
-import weatherObserver from "./weatherObserver"
+import { ForecastObserver } from "./observers"
 import { ForecastService } from "./data/service/ForecastService"
 import { Strings } from "./res/Strings"
 console.log("Hello Tempestas")
@@ -98,8 +98,8 @@ const updateWeatherDescriptions = (currentWeather) => {
   sunsetPara.textContent = currentWeather.sunset
 }
 
-weatherObserver.subscribe(updateLocationWeather)
-weatherObserver.subscribe(updateWeatherDescriptions)
+ForecastObserver.subscribe(updateLocationWeather)
+ForecastObserver.subscribe(updateWeatherDescriptions)
 
 getDefaultWeather()
 
