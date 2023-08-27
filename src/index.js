@@ -49,8 +49,6 @@ const handleEnter = (event) => {
 
   if (event.key === "Enter") {
     service.getForecast(parent.value)
-    // weatherObserver.notify(parent.value)
-    // TODO: Search the term
   }
 }
 
@@ -61,7 +59,9 @@ const handleInput = (event) => {
   }
 }
 
-const updateWeather = (currentWeather) => {
+const updateLocationWeather = (currentWeather) => {
+  // current weather obj
+  console.log(currentWeather)
   const temperaturePara = getElement(".temperature")
   const conditionImage = getElement("#condition-image")
   const conditionPara = getElement(".condition")
@@ -69,17 +69,37 @@ const updateWeather = (currentWeather) => {
   const locationPara = getElement("#location")
 
   temperaturePara.textContent =
-    currentWeather.temperatureFarenheit + Strings.DEGREE_SYMBOL_HEX
+    currentWeather.temperatureFarenheit +
+    Strings.DEGREE_SYMBOL_HEX +
+    Strings.FARENHEIT_SYMBOL
 
   conditionPara.textContent = currentWeather.condition
   temperatureFeelsPara.textContent =
     "Feels like " +
     currentWeather.feelsLikeFarenheit +
-    Strings.DEGREE_SYMBOL_HEX
-  locationPara.textContent = `${currentWeather.city}, ${currentWeather.region}`
+    Strings.DEGREE_SYMBOL_HEX +
+    Strings.FARENHEIT_SYMBOL
+
+  locationPara.textContent = currentWeather.city
 }
 
-weatherObserver.subscribe(updateWeather)
+const updateWeatherDescriptions = (currentWeather) => {
+  const uvIndexPara = getElement("#uv-index")
+  const humidityPara = getElement("#humidity")
+  const windsPara = getElement("#winds")
+  const sunrisePara = getElement("#sunrise")
+  const sunsetPara = getElement("#sunset")
+
+  uvIndexPara.textContent = currentWeather.uvIndex
+  humidityPara.textContent = currentWeather.humidity + Strings.PERCENT_SYMBOL
+  windsPara.textContent = `${currentWeather.windsMph} ${Strings.MILES_PER_HOUR}`
+
+  sunrisePara.textContent = currentWeather.sunrise
+  sunsetPara.textContent = currentWeather.sunset
+}
+
+weatherObserver.subscribe(updateLocationWeather)
+weatherObserver.subscribe(updateWeatherDescriptions)
 
 getDefaultWeather()
 
