@@ -216,11 +216,12 @@ main {
   background-color: var(--clr-primary);
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .location-weather .card .body {
-  margin-inline: auto;
-  width: fit-content;
+  /* margin-inline: auto; */
+  width: 50%;
 }
 
 .card-header {
@@ -239,7 +240,7 @@ main {
 }
 
 .condition {
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 .temperature-feels {
