@@ -206,6 +206,7 @@ main {
 }
 
 .location-weather {
+  font-weight: bold;
   gap: var(--space-300);
   flex: 5;
 }
@@ -220,12 +221,12 @@ main {
 }
 
 .location-weather .card .body {
-  /* margin-inline: auto; */
-  width: 50%;
+  width: 80%;
 }
 
 .card-header {
   display: flex;
+  justify-content: center;
   align-items: flex-end;
   margin: 0;
   margin-inline: 0;
@@ -240,16 +241,20 @@ main {
 }
 
 .condition {
+  text-align: center;
   font-size: 2.5rem;
+  /* width: 25ch; */
 }
 
 .temperature-feels {
-  font-size: 2rem;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.3rem;
 }
 
 #location {
-  font-size: 1.5rem;
-  width: 25ch;
+  text-align: center;
+  font-size: 3rem;
 }
 
 .card {
