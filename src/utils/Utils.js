@@ -1,4 +1,4 @@
-import { CurrentWeatherModel } from "../data/model/CurrentWeatherModel"
+import CurrentWeatherModel from "../data/model/CurrentWeatherModel"
 
 // Utility functions
 const getElement = (selector) => {
