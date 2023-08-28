@@ -1,4 +1,5 @@
 import { formatUvIndex, roundNumber } from "../../utils/Utils"
+import { WeatherConditions } from "./WeatherConditions"
 
 // TODO: Change this to get the condition code and chnage the condition to text
 // Adding properties like contion description, condition code, condtion img or icon
@@ -9,8 +10,7 @@ export class CurrentWeatherModel {
     localTime,
     temperatureFarenheit,
     isDay,
-    condition,
-    icon,
+    code,
     windsMph,
     humidity,
     feelsLikeFarenheit,
@@ -23,8 +23,8 @@ export class CurrentWeatherModel {
     this.localTime = localTime
     this.temperatureFarenheit = roundNumber(temperatureFarenheit)
     this.isDay = isDay
-    this.condition = condition
-    this.icon = icon
+    this.code = code
+    this.condition = WeatherConditions.getCondition(code)
     this.windsMph = roundNumber(windsMph)
     this.humidity = humidity
     this.feelsLikeFarenheit = roundNumber(feelsLikeFarenheit)
