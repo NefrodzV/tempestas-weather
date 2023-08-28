@@ -297,6 +297,10 @@ main {
   gap: var(--space-200);
 }
 
+#forecast-image {
+  height: 76px;
+}
+
 .forecast-card:first-child {
   margin-left: 1%;
 }
