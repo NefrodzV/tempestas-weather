@@ -70,17 +70,15 @@ const updateLocationWeather = (currentWeather) => {
   const locationPara = getElement("#location")
 
   temperaturePara.textContent =
-    currentWeather.temperatureFarenheit +
-    Strings.DEGREE_SYMBOL_HEX +
-    Strings.FARENHEIT_SYMBOL
+    currentWeather.temperatureFarenheit + Strings.DEGREE_SYMBOL_HEX
 
-  conditionPara.textContent = currentWeather.condition
+  conditionPara.textContent = currentWeather.condition.day
   temperatureFeelsPara.textContent =
     "Feels like " +
     currentWeather.feelsLikeFarenheit +
-    Strings.DEGREE_SYMBOL_HEX +
-    Strings.FARENHEIT_SYMBOL
+    Strings.DEGREE_SYMBOL_HEX
 
+  conditionImage.src = currentWeather.condition.img
   locationPara.textContent = currentWeather.city
 }
 
@@ -103,8 +101,6 @@ ForecastObserver.subscribe(updateLocationWeather)
 ForecastObserver.subscribe(updateWeatherDescriptions)
 
 getDefaultWeather()
-
-console.log(WeatherConditions.getCondition(1000))
 
 loadImage(logoImage, logoSvg)
 loadImage(discordImage, discordSvg)
