@@ -31,7 +31,7 @@ const isBlank = (string) => {
 const getCurrentWeatherFromJson = (response) => {
   const currentWeather = new CurrentWeatherModel(
     response.location.name,
-    response.location.region,
+    response.location.country,
     response.location.localtime,
     response.current.temp_f,
     response.current.is_day,
@@ -52,6 +52,15 @@ const roundNumber = (number) => {
   return Math.round(number)
 }
 
+const formatUvIndex = (uvIndex) => {
+  const LOW = "Low"
+  const MEDIUM = "Medium"
+  const HIGH = "High"
+  if (uvIndex < 3) return LOW
+  if (uvIndex > 2 && uvIndex < 8) return MEDIUM
+  return HIGH
+}
+
 export {
   getElement,
   loadImage,
@@ -60,4 +69,5 @@ export {
   isBlank,
   getCurrentWeatherFromJson,
   roundNumber,
+  formatUvIndex,
 }

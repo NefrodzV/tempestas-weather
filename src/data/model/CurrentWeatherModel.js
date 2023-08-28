@@ -1,5 +1,7 @@
-import { roundNumber } from "../../utils/Utils"
+import { formatUvIndex, roundNumber } from "../../utils/Utils"
 
+// TODO: Change this to get the condition code and chnage the condition to text
+// Adding properties like contion description, condition code, condtion img or icon
 export class CurrentWeatherModel {
   constructor(
     city,
@@ -26,7 +28,7 @@ export class CurrentWeatherModel {
     this.windsMph = roundNumber(windsMph)
     this.humidity = humidity
     this.feelsLikeFarenheit = roundNumber(feelsLikeFarenheit)
-    this.uvIndex = uvIndex
+    this.uvIndex = formatUvIndex(uvIndex)
     this.sunrise = sunrise
     this.sunset = sunset
   }
