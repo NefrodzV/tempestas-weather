@@ -18,6 +18,7 @@ import {
 import { ForecastObserver } from "./observers"
 import { ForecastService } from "./data/service/ForecastService"
 import { Strings } from "./res/Strings"
+import { WeatherConditions } from "./data/model/WeatherConditions"
 console.log("Hello Tempestas")
 
 const service = ForecastService
@@ -102,6 +103,8 @@ ForecastObserver.subscribe(updateLocationWeather)
 ForecastObserver.subscribe(updateWeatherDescriptions)
 
 getDefaultWeather()
+
+console.log(WeatherConditions.getCondition(1000))
 
 loadImage(logoImage, logoSvg)
 loadImage(discordImage, discordSvg)

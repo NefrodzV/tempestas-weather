@@ -1,6 +1,6 @@
 import SunnySvg from "../../assets/weather-condition/sunny.svg"
 import PartlyCloudySvg from "../../assets/weather-condition/partly-cloudy.svg"
-import CloudySvg from "../../assets/weather-condition/cloudy.png"
+import CloudySvg from "../../assets/weather-condition/cloudy.svg"
 import OvercastSvg from "../../assets/weather-condition/overcast.svg"
 import MistSvg from "../../assets/weather-condition/mist.svg"
 import PatchySnowSvg from "../../assets/weather-condition/patchy-snow.svg"
@@ -9,14 +9,16 @@ import PatchySleetSvg from "../../assets/weather-condition/patchy-sleet.svg"
 import PatchyDrizzleSvg from "../../assets/weather-condition/patchy-drizzle.svg"
 import ThunderOutbreakSvg from "../../assets/weather-condition/thunder-outbreak.svg"
 import SnowSvg from "../../assets/weather-condition/snow.svg"
+import DrizzleSvg from "../../assets/weather-condition/drizzle.svg"
 import SleetCloudSvg from "../../assets/weather-condition/sleet.svg"
 import FogSvg from "../../assets/weather-condition/fog.svg"
-import ModerateRainSvg from " ../../assets/weather-condition/moderate-rain.svg"
+import ModerateRainSvg from "../../assets/weather-condition/moderate-rain.svg"
 import IcePalletsSvg from "../../assets/weather-condition/ice-pellets.svg"
 import TorrentialSvg from "../../assets/weather-condition/torrential.svg"
 import BlizzardSvg from "../../assets/weather-condition/blizzard.svg"
-import HeavyRainSvg from "../../assets/heavy-rain.svg"
-export default WeatherConditions = (function () {
+import HeavyRainSvg from "../../assets/weather-condition/heavy-rain.svg"
+
+const WeatherConditions = (function () {
   const conditions = [
     {
       code: 1000,
@@ -82,7 +84,7 @@ export default WeatherConditions = (function () {
       code: 1114,
       day: "Blowing snow",
       night: "Blowing snow",
-      img: SnowBlowing,
+      img: SnowSvg,
     },
     {
       code: 1117,
@@ -310,7 +312,9 @@ export default WeatherConditions = (function () {
 
   return {
     getCondition(code) {
-      return conditions.filter((condition) => condition.code === code)
+      return conditions.filter((condition) => condition.code === code)[0]
     },
   }
 })()
+
+export { WeatherConditions }
