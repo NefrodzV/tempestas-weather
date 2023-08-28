@@ -18,6 +18,7 @@ import TorrentialSvg from "../../assets/weather-condition/torrential.svg"
 import BlizzardSvg from "../../assets/weather-condition/blizzard.svg"
 import HeavyRainSvg from "../../assets/weather-condition/heavy-rain.svg"
 
+// This will return the condition depending on the weather code in the server
 const WeatherConditions = (function () {
   const conditions = [
     {
