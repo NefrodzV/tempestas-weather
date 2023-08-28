@@ -29,14 +29,14 @@ const isBlank = (string) => {
 }
 
 const getCurrentWeatherFromJson = (response) => {
+  console.log(response)
   const currentWeather = new CurrentWeatherModel(
     response.location.name,
     response.location.country,
     response.location.localtime,
     response.current.temp_f,
     response.current.is_day,
-    response.current.condition.text,
-    response.current.condition.icon,
+    response.current.condition.code,
     response.current.wind_mph,
     response.current.humidity,
     response.current.feelslike_f,
