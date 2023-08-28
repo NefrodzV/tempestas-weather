@@ -24,15 +24,32 @@ console.log("Hello Tempestas")
 const service = ForecastService
 
 // Setting the default images of the page
-const logoImage = getElement(".logo img")
-const discordImage = getElement("#discord-link img")
-const leftButtonImg = getElement("#left img")
-const rightButtonImg = getElement("#right img")
-const uvImage = getElement("#uv-img")
-const humidityImg = getElement("#humidity-img")
-const windsImg = getElement("#winds-img")
-const sunsetImg = getElement("#sunset-img")
 
+const loadTabIcon = () => {
+  const link = document.createElement("link")
+  link.setAttribute("rel", "icon")
+  link.href = logoSvg
+  document.head.appendChild(link)
+}
+
+const loadDefaultImages = () => {
+  const logoImage = getElement(".logo img")
+  const discordImage = getElement("#discord-link img")
+  const leftButtonImg = getElement("#left img")
+  const rightButtonImg = getElement("#right img")
+  const uvImage = getElement("#uv-img")
+  const humidityImg = getElement("#humidity-img")
+  const windsImg = getElement("#winds-img")
+  const sunsetImg = getElement("#sunset-img")
+  loadImage(logoImage, logoSvg)
+  loadImage(discordImage, discordSvg)
+  loadImage(leftButtonImg, chevronLeftSvg)
+  loadImage(rightButtonImg, chevronRightSvg)
+  loadImage(uvImage, uvSvg)
+  loadImage(humidityImg, humiditySvg)
+  loadImage(windsImg, windsSvg)
+  loadImage(sunsetImg, sunsetSvg)
+}
 const getDefaultWeather = () => {
   service.getForecast("London")
 }
@@ -100,16 +117,10 @@ const updateWeatherDescriptions = (currentWeather) => {
 ForecastObserver.subscribe(updateLocationWeather)
 ForecastObserver.subscribe(updateWeatherDescriptions)
 
+// Start main Logic
+loadTabIcon()
+loadDefaultImages()
 getDefaultWeather()
-
-loadImage(logoImage, logoSvg)
-loadImage(discordImage, discordSvg)
-loadImage(leftButtonImg, chevronLeftSvg)
-loadImage(rightButtonImg, chevronRightSvg)
-loadImage(uvImage, uvSvg)
-loadImage(humidityImg, humiditySvg)
-loadImage(windsImg, windsSvg)
-loadImage(sunsetImg, sunsetSvg)
 
 const searchInput = getElement("#search")
 searchInput.addEventListener("keydown", handleEnter)
