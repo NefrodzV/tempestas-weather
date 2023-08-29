@@ -19,6 +19,8 @@ import BlizzardSvg from "../../assets/weather-condition/blizzard.svg"
 import HeavyRainSvg from "../../assets/weather-condition/heavy-rain.svg"
 
 // This will return the condition depending on the weather code in the server
+/**  TODO: set the code for the partly cloudy. mist, haze
+ *  and cloudy svg to be a moon for the night */
 const WeatherConditions = (function () {
   const conditions = [
     {

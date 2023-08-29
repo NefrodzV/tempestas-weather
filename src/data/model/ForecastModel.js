@@ -1,4 +1,3 @@
-export default function ForecastModel(CurrentWeather, forecastsDays) {
-  this.CurrentWeather = CurrentWeather
-  this.forecastsDays = forecastsDays
+export default function ForecastModel(ForcastDayModels) {
+  this.forecastDays = ForcastDayModels
 }

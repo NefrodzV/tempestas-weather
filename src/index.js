@@ -117,7 +117,7 @@ const updateWeatherDescriptions = (currentWeather) => {
 ForecastObserver.subscribe(updateLocationWeather)
 ForecastObserver.subscribe(updateWeatherDescriptions)
 
-// Start main Logic
+// Main
 loadTabIcon()
 loadDefaultImages()
 getDefaultWeather()
