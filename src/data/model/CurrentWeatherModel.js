@@ -9,6 +9,7 @@ export default function CurrentWeatherModel(
   code,
   windMph,
   humidity,
+  feelsLikeinFarenheit,
   uvIndex,
   sunset,
   sunrise
@@ -19,6 +20,7 @@ export default function CurrentWeatherModel(
   this.condition = WeatherConditions.getCondition(code)
   this.windMph = roundNumber(windMph)
   this.humidity = humidity
+  this.feelsLikeinFarenheit = roundNumber(feelsLikeinFarenheit)
   this.uvIndex = formatUvIndex(uvIndex)
   this.sunrise = sunrise
   this.sunset = sunset
