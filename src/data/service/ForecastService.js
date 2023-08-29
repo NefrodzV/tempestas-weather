@@ -1,4 +1,7 @@
-import { getCurrentWeatherFromJson } from "../../utils/Utils"
+import {
+  getCurrentWeatherFromJson,
+  getForecastFromJson,
+} from "../../utils/Utils"
 import { ForecastObserver } from "../../observers"
 
 export const ForecastService = (function createForecastService() {
@@ -11,8 +14,10 @@ export const ForecastService = (function createForecastService() {
       .json()
       .then(
         (response) => {
-          const currentWeather = getCurrentWeatherFromJson(response)
-          ForecastObserver.notify(currentWeather)
+          // const currentWeather = getCurrentWeatherFromJson(response)
+          // ForecastObserver.notify(currentWeather)
+          console.log("server response" + response)
+          getForecastFromJson(response)
         },
         (reject) => {
           console.log("Reject" + reject)
