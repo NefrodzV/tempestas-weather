@@ -1,11 +1,11 @@
 export default function ForecastModel(
   LocationModel,
   CurrentWeather,
-  DailyWeather,
-  HourlyWeather
+  weatherByDays,
+  weatherByHours
 ) {
   this.location = LocationModel
   this.currentWeather = CurrentWeather
-  this.weatherByDays = DailyWeather
-  this.weatherbyHour = HourlyWeather
+  this.weatherByDays = weatherByDays
+  this.weatherbyHour = weatherByHours
 }
