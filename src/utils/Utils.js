@@ -65,7 +65,6 @@ const getLocationFromJson = (response) => {
 }
 
 const getWeatherByDaysFromJson = (response) => {
-  console.log(response)
   const dailyWeatherModels = []
   response.forecast.forecastday.forEach((element) => {
     const dailyWeatherModel = new DailyWeatherModel(
@@ -77,7 +76,6 @@ const getWeatherByDaysFromJson = (response) => {
     )
     dailyWeatherModels.push(dailyWeatherModel)
   })
-
   return dailyWeatherModels
 }
 
@@ -101,7 +99,6 @@ const getHourlyWeatherFromJson = (response) => {
       hourlyWeatherModels.push(hourlyWeatherModel)
     }
   })
-
   return hourlyWeatherModels
 }
 
@@ -110,7 +107,6 @@ const getForecastFromJson = (response) => {
   const CurrentWeatherModel = getCurrentWeatherFromJson(response)
   const dailyWeatherModels = getWeatherByDaysFromJson(response)
   const hourlyWeatherModels = getHourlyWeatherFromJson(response)
-
   return new ForecastModel(
     LocationModel,
     CurrentWeatherModel,
