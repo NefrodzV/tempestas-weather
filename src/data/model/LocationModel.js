@@ -1,4 +1,4 @@
-export default function LocationModel(name, localTime) {
-  this.name = name
+export default function LocationModel(city, localTime) {
+  this.city = city
   this.localTime = localTime
 }

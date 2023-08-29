@@ -14,10 +14,8 @@ export const ForecastService = (function createForecastService() {
       .json()
       .then(
         (response) => {
-          // const currentWeather = getCurrentWeatherFromJson(response)
-          // ForecastObserver.notify(currentWeather)
-          console.log("server response" + response)
-          getForecastFromJson(response)
+          const ForecastModel = getForecastFromJson(response)
+          console.log(ForecastModel)
         },
         (reject) => {
           console.log("Reject" + reject)

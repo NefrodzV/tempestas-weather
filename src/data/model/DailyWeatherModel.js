@@ -1,6 +1,7 @@
 import { WeatherConditions } from "./WeatherConditions"
 
-export default function DaylyWeatherModel(
+// Weather by day object
+export default function DailyWeatherModel(
   dateEpoch,
   averageFarenheitTemperature,
   code,
