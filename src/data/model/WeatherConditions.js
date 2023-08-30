@@ -1,8 +1,11 @@
 import SunnySvg from "../../assets/weather-condition/sunny.svg"
 import PartlyCloudySvg from "../../assets/weather-condition/partly-cloudy.svg"
+import PartlyCloudyNightSvg from "../../assets/weather-condition/partly-cloudy.svg"
 import CloudySvg from "../../assets/weather-condition/cloudy.svg"
+import CloudyNightSvg from "../../assets/weather-condition/cloudy-night.svg"
 import OvercastSvg from "../../assets/weather-condition/overcast.svg"
 import MistSvg from "../../assets/weather-condition/mist.svg"
+import MistNightSvg from "../../assets/weather-condition/mist-night.svg"
 import PatchySnowSvg from "../../assets/weather-condition/patchy-snow.svg"
 import PatchyRainSvg from "../../assets/weather-condition/patchy-rain.svg"
 import PatchySleetSvg from "../../assets/weather-condition/patchy-sleet.svg"
@@ -12,6 +15,7 @@ import SnowSvg from "../../assets/weather-condition/snow.svg"
 import DrizzleSvg from "../../assets/weather-condition/drizzle.svg"
 import SleetCloudSvg from "../../assets/weather-condition/sleet.svg"
 import FogSvg from "../../assets/weather-condition/fog.svg"
+import FogNightSvg from "../../assets/weather-condition/fog-night.svg"
 import ModerateRainSvg from "../../assets/weather-condition/moderate-rain.svg"
 import IcePalletsSvg from "../../assets/weather-condition/ice-pellets.svg"
 import TorrentialSvg from "../../assets/weather-condition/torrential.svg"
@@ -34,12 +38,14 @@ const WeatherConditions = (function () {
       day: "Partly cloudy",
       night: "Partly cloudy",
       img: PartlyCloudySvg,
+      imgNight: PartlyCloudyNightSvg,
     },
     {
       code: 1006,
       day: "Cloudy",
       night: "Cloudy",
       img: CloudySvg,
+      imgNight: CloudyNightSvg,
     },
     {
       code: 1009,
@@ -52,6 +58,7 @@ const WeatherConditions = (function () {
       day: "Mist",
       night: "Mist",
       img: MistSvg,
+      imgNight: MistNightSvg,
     },
     {
       code: 1063,
@@ -100,12 +107,14 @@ const WeatherConditions = (function () {
       day: "Fog",
       night: "Fog",
       img: FogSvg,
+      imgNight: FogNightSvg,
     },
     {
       code: 1147,
       day: "Freezing fog",
       night: "Freezing fog",
       img: FogSvg,
+      imgNight: FogNightSvg,
     },
     {
       code: 1150,
@@ -314,8 +323,25 @@ const WeatherConditions = (function () {
   ]
 
   return {
-    getCondition(code) {
-      return conditions.filter((condition) => condition.code === code)[0]
+    getCondition(code, isDay) {
+      const obj = {
+        text: null,
+        img: null,
+      }
+      conditions.forEach((condition) => {
+        if (condition.code === code) {
+          // If its not day and has imgNight prop
+          if (!isDay && condition.hasOwnProperty("imgNight")) {
+            obj.text = condition.night
+            obj.img = condition.imgNight
+            return
+          }
+          obj.text = condition.day
+          obj.img = condition.img
+        }
+      })
+
+      return obj
     },
   }
 })()

@@ -17,7 +17,7 @@ export default function CurrentWeatherModel(
   this.farenheitTemperature = roundNumber(farenheitTemperature)
   this.isDay = isDay
   this.code = code
-  this.condition = WeatherConditions.getCondition(code)
+  this.condition = WeatherConditions.getCondition(code, isDay)
   this.windMph = roundNumber(windMph)
   this.humidity = humidity
   this.feelsLikeinFarenheit = roundNumber(feelsLikeinFarenheit)

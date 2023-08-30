@@ -15,6 +15,7 @@ export const ForecastService = (function createForecastService() {
       .then(
         (response) => {
           const ForecastModel = getForecastFromJson(response)
+          ForecastObserver.notify(ForecastModel)
           console.log(ForecastModel)
         },
         (reject) => {

@@ -18,6 +18,7 @@ import {
 import { ForecastObserver } from "./observers"
 import { ForecastService } from "./data/service/ForecastService"
 import { Strings } from "./res/Strings"
+import { WeatherConditions } from "./data/model/WeatherConditions"
 
 const service = ForecastService
 
@@ -84,11 +85,12 @@ const updateLocationWeather = (data) => {
   const locationPara = getElement("#location")
 
   const currentWeather = data.currentWeather
+  console.log(currentWeather)
 
   temperaturePara.textContent =
     currentWeather.farenheitTemperature + Strings.DEGREE_SYMBOL_HEX
 
-  conditionPara.textContent = currentWeather.condition.day
+  conditionPara.textContent = currentWeather.condition.text
   temperatureFeelsPara.textContent =
     "Feels like " +
     currentWeather.feelsLikeinFarenheit +
@@ -116,6 +118,9 @@ const updateWeatherDescriptions = (data) => {
 
 ForecastObserver.subscribe(updateLocationWeather)
 ForecastObserver.subscribe(updateWeatherDescriptions)
+
+console.log("My test")
+WeatherConditions.getCondition(1003, false)
 
 // Main
 loadTabIcon()
