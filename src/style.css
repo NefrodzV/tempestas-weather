@@ -108,6 +108,10 @@ body {
   line-height: 1;
 }
 
+::placeholder {
+  color: var(--clr-dark);
+}
+
 body,
 main,
 .location-weather .card,
