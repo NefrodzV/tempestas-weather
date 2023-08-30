@@ -11,8 +11,8 @@ export default function CurrentWeatherModel(
   humidity,
   feelsLikeinFarenheit,
   uvIndex,
-  sunset,
-  sunrise
+  sunrise,
+  sunset
 ) {
   this.farenheitTemperature = roundNumber(farenheitTemperature)
   this.isDay = isDay
