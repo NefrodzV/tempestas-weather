@@ -18,8 +18,6 @@ import {
 import { ForecastObserver } from "./observers"
 import { ForecastService } from "./data/service/ForecastService"
 import { Strings } from "./res/Strings"
-import { WeatherConditions } from "./data/model/WeatherConditions"
-console.log("Hello Tempestas")
 
 const service = ForecastService
 
@@ -77,41 +75,43 @@ const handleInput = (event) => {
   }
 }
 
-const updateLocationWeather = (currentWeather) => {
+const updateLocationWeather = (data) => {
   // current weather obj
-  console.log(currentWeather)
   const temperaturePara = getElement(".temperature")
   const conditionImage = getElement("#condition-image")
   const conditionPara = getElement(".condition")
   const temperatureFeelsPara = getElement(".temperature-feels")
   const locationPara = getElement("#location")
 
+  const currentWeather = data.currentWeather
+
   temperaturePara.textContent =
-    currentWeather.temperatureFarenheit + Strings.DEGREE_SYMBOL_HEX
+    currentWeather.farenheitTemperature + Strings.DEGREE_SYMBOL_HEX
 
   conditionPara.textContent = currentWeather.condition.day
   temperatureFeelsPara.textContent =
     "Feels like " +
-    currentWeather.feelsLikeFarenheit +
+    currentWeather.feelsLikeinFarenheit +
     Strings.DEGREE_SYMBOL_HEX
 
   conditionImage.src = currentWeather.condition.img
-  locationPara.textContent = currentWeather.city
+  locationPara.textContent = data.location.city
 }
 
-const updateWeatherDescriptions = (currentWeather) => {
+const updateWeatherDescriptions = (data) => {
   const uvIndexPara = getElement("#uv-index")
   const humidityPara = getElement("#humidity")
   const windsPara = getElement("#winds")
   const sunrisePara = getElement("#sunrise")
   const sunsetPara = getElement("#sunset")
 
-  uvIndexPara.textContent = currentWeather.uvIndex
-  humidityPara.textContent = currentWeather.humidity + Strings.PERCENT_SYMBOL
-  windsPara.textContent = `${currentWeather.windsMph} ${Strings.MILES_PER_HOUR}`
+  uvIndexPara.textContent = data.currentWeather.uvIndex
+  humidityPara.textContent =
+    data.currentWeather.humidity + Strings.PERCENT_SYMBOL
+  windsPara.textContent = `${data.currentWeather.windMph} ${Strings.MILES_PER_HOUR}`
 
-  sunrisePara.textContent = currentWeather.sunrise
-  sunsetPara.textContent = currentWeather.sunset
+  sunrisePara.textContent = data.currentWeather.sunrise
+  sunsetPara.textContent = data.currentWeather.sunset
 }
 
 ForecastObserver.subscribe(updateLocationWeather)
