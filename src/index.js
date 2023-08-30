@@ -119,9 +119,6 @@ const updateWeatherDescriptions = (data) => {
 ForecastObserver.subscribe(updateLocationWeather)
 ForecastObserver.subscribe(updateWeatherDescriptions)
 
-console.log("My test")
-WeatherConditions.getCondition(1003, false)
-
 // Main
 loadTabIcon()
 loadDefaultImages()
