@@ -19,6 +19,7 @@ import { ForecastObserver } from "./observers"
 import { ForecastService } from "./data/service/ForecastService"
 import { Strings } from "./res/Strings"
 import { WeatherConditions } from "./data/model/WeatherConditions"
+import Carousel from "./Carousel"
 
 const service = ForecastService
 
@@ -116,9 +117,6 @@ const updateWeatherDescriptions = (data) => {
   sunsetPara.textContent = data.currentWeather.sunset
 }
 
-ForecastObserver.subscribe(updateLocationWeather)
-ForecastObserver.subscribe(updateWeatherDescriptions)
-
 // Main
 loadTabIcon()
 loadDefaultImages()
@@ -127,3 +125,10 @@ getDefaultWeather()
 const searchInput = getElement("#search")
 searchInput.addEventListener("keydown", handleEnter)
 searchInput.addEventListener("input", handleInput)
+
+const carouselElement = document.querySelector(".carousel")
+const carousel = new Carousel(carouselElement)
+carousel.update()
+// Setting my observers
+ForecastObserver.subscribe(updateLocationWeather)
+ForecastObserver.subscribe(updateWeatherDescriptions)
