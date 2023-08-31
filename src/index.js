@@ -128,7 +128,9 @@ searchInput.addEventListener("input", handleInput)
 
 const carouselElement = document.querySelector(".carousel")
 const carousel = new Carousel(carouselElement)
-carousel.update()
+
+console.log(carousel)
+
 // Setting my observers
 ForecastObserver.subscribe(updateLocationWeather)
 ForecastObserver.subscribe(updateWeatherDescriptions)
