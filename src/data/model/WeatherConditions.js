@@ -1,6 +1,6 @@
 import SunnySvg from "../../assets/weather-condition/sunny.svg"
 import PartlyCloudySvg from "../../assets/weather-condition/partly-cloudy.svg"
-import PartlyCloudyNightSvg from "../../assets/weather-condition/partly-cloudy.svg"
+import PartlyCloudyNightSvg from "../../assets/weather-condition/partly-cloudy-night.svg"
 import CloudySvg from "../../assets/weather-condition/cloudy.svg"
 import CloudyNightSvg from "../../assets/weather-condition/cloudy-night.svg"
 import OvercastSvg from "../../assets/weather-condition/overcast.svg"
