@@ -3,6 +3,7 @@ import DailyWeatherModel from "../data/model/DailyWeatherModel"
 import ForecastModel from "../data/model/ForecastModel"
 import HourlyWeatherModel from "../data/model/HourlyWeatherModel"
 import LocationModel from "../data/model/LocationModel.js"
+import Strings from "../res/Strings.js"
 
 // Utility functions
 const getElement = (selector) => {
@@ -46,6 +47,14 @@ const formatUvIndex = (uvIndex) => {
 }
 
 const getCurrentWeatherFromJson = (response) => {
+  let sunrise = null
+  let sunset = null
+
+  if (!response.forecast.forecastday.length === 0) {
+    sunrise = response.forecast.forecastday[0].astro.sunrise
+    sunset = response.forecast.forecastday[0].astro.sunset
+  }
+
   return new CurrentWeatherModel(
     response.current.temp_f,
     response.current.is_day,
@@ -54,8 +63,8 @@ const getCurrentWeatherFromJson = (response) => {
     response.current.humidity,
     response.current.feelslike_f,
     response.current.uv,
-    response.forecast.forecastday[0].astro.sunrise,
-    response.forecast.forecastday[0].astro.sunset
+    sunrise,
+    sunset
   )
 }
 const getLocationFromJson = (response) => {
@@ -66,7 +75,12 @@ const getLocationFromJson = (response) => {
 
 const getWeatherByDaysFromJson = (response) => {
   const dailyWeatherModels = []
-  response.forecast.forecastday.forEach((element) => {
+  const forecastDays = response.forecast.forecastday
+
+  if (forecastDays.length === 0) {
+    return dailyWeatherModels
+  }
+  forecastDays.forEach((element) => {
     const dailyWeatherModel = new DailyWeatherModel(
       element.date_epoch,
       element.day.avgtemp_f,
@@ -83,8 +97,13 @@ const getWeatherByDaysFromJson = (response) => {
 // and if its 11pm or more it doesnt return anything
 const getHourlyWeatherFromJson = (response) => {
   const hourlyWeatherModels = []
+  const forecastDays = response.forecast.forecastday
+  if (forecastDays.length === 0) {
+    return hourlyWeatherModels
+  }
   const localTimeEpoch = response.location.localtime_epoch
   const weatherByHours = response.forecast.forecastday[0].hour
+
   weatherByHours.forEach((hourlyWeather) => {
     if (hourlyWeather.time_epoch > localTimeEpoch) {
       const hourlyWeatherModel = new HourlyWeatherModel(
@@ -114,6 +133,12 @@ const getForecastFromJson = (response) => {
     hourlyWeatherModels
   )
 }
+
+const formatWeatherChance = (rainChance, snowChance) => {
+  const rainChanceFormat = `${rainChance}%`
+  const snowChanceFormat = `${snowChance}%`
+  return rainChance > snowChance ? rainChanceFormat : snowChanceFormat
+}
 export {
   getElement,
   loadImage,
@@ -124,4 +149,5 @@ export {
   getCurrentWeatherFromJson,
   roundNumber,
   formatUvIndex,
+  formatWeatherChance,
 }
