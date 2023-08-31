@@ -6,7 +6,7 @@ export default function HourlyWeatherModel(
   time,
   code,
   farenheitTemperature,
-  chanceofRain,
+  chanceOfRain,
   chanceOfSnow
 ) {
   this.epocTime = epocTime
@@ -15,6 +15,6 @@ export default function HourlyWeatherModel(
   this.code = code
   this.condition = WeatherConditions.getCondition(code, isDay)
   this.farenheitTemperature = farenheitTemperature
-  this.chanceofRain = chanceofRain
+  this.chanceOfRain = chanceOfRain
   this.chanceOfSnow = chanceOfSnow
 }
