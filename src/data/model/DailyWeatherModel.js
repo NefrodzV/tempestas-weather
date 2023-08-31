@@ -6,12 +6,12 @@ export default function DailyWeatherModel(
   averageFarenheitTemperature,
   code,
   dailyChanceOfRain,
-  dailyChanceofSnow
+  dailyChanceOfSnow
 ) {
   this.date = dateEpoch // Needs to be formatted
   this.averageFarenheitTemperature = averageFarenheitTemperature
   this.code = code
   this.condition = WeatherConditions.getCondition(code, false)
   this.dailyChanceOfRain = dailyChanceOfRain
-  this.dailyChanceofSnow = dailyChanceofSnow
+  this.dailyChanceOfSnow = dailyChanceOfSnow
 }
