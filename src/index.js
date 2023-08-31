@@ -51,7 +51,7 @@ const loadDefaultImages = () => {
   loadImage(sunsetImg, sunsetSvg)
 }
 const getDefaultWeather = () => {
-  service.getForecast("London")
+  service.getForecast("Ponce")
 }
 const handleEnter = (event) => {
   const parent = event.target
