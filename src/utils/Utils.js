@@ -1,3 +1,4 @@
+import { format } from "date-fns"
 import CurrentWeatherModel from "../data/model/CurrentWeatherModel"
 import DailyWeatherModel from "../data/model/DailyWeatherModel"
 import ForecastModel from "../data/model/ForecastModel"
@@ -98,11 +99,12 @@ const getWeatherByDaysFromJson = (response) => {
 const getHourlyWeatherFromJson = (response) => {
   const hourlyWeatherModels = []
   const forecastDays = response.forecast.forecastday
+  console.log(forecastDays)
   if (forecastDays.length === 0) {
     return hourlyWeatherModels
   }
   const localTimeEpoch = response.location.localtime_epoch
-  const weatherByHours = response.forecast.forecastday[0].hour
+  const weatherByHours = forecastDays[0].hour
 
   weatherByHours.forEach((hourlyWeather) => {
     if (hourlyWeather.time_epoch > localTimeEpoch) {
@@ -126,6 +128,7 @@ const getForecastFromJson = (response) => {
   const CurrentWeatherModel = getCurrentWeatherFromJson(response)
   const dailyWeatherModels = getWeatherByDaysFromJson(response)
   const hourlyWeatherModels = getHourlyWeatherFromJson(response)
+  console.log(hourlyWeatherModels)
   return new ForecastModel(
     LocationModel,
     CurrentWeatherModel,
@@ -139,6 +142,14 @@ const formatWeatherChance = (rainChance, snowChance) => {
   const snowChanceFormat = `${snowChance}%`
   return rainChance > snowChance ? rainChanceFormat : snowChanceFormat
 }
+
+const formatEpochTime = (epochValue) => {
+  const time = new Date(epochValue * 1000)
+  // Returns hour and am or pm
+  const formattedTime = format(time, "h a")
+
+  return formattedTime
+}
 export {
   getElement,
   loadImage,
@@ -150,4 +161,5 @@ export {
   roundNumber,
   formatUvIndex,
   formatWeatherChance,
+  formatEpochTime,
 }
