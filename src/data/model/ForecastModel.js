@@ -7,5 +7,5 @@ export default function ForecastModel(
   this.location = LocationModel
   this.currentWeather = CurrentWeather
   this.weatherByDays = weatherByDays
-  this.weatherbyHour = weatherByHours
+  this.weatherByHour = weatherByHours
 }
