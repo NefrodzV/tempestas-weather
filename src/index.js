@@ -86,7 +86,6 @@ const updateLocationWeather = (data) => {
   const locationPara = getElement("#location")
 
   const currentWeather = data.currentWeather
-  console.log(currentWeather)
 
   temperaturePara.textContent =
     currentWeather.farenheitTemperature + Strings.DEGREE_SYMBOL_HEX
@@ -128,8 +127,6 @@ searchInput.addEventListener("input", handleInput)
 
 const carouselElement = document.querySelector(".carousel")
 const carousel = new Carousel(carouselElement)
-
-console.log(carousel)
 
 // Setting my observers
 ForecastObserver.subscribe(updateLocationWeather)
