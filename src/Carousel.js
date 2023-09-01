@@ -9,12 +9,16 @@ export default class Carousel {
     this.carousel = carouselElement
     this.leftButton = carouselElement.children[0]
     this.leftButton.addEventListener("click", () => {
+      if (this.counter === 0) return
       this.counter++
       this.applyTranslate()
     })
     this.carouselWindow = carouselElement.children[1]
     this.rightButton = carouselElement.children[2]
     this.rightButton.addEventListener("click", () => {
+      if (Math.abs(this.counter) + 3 >= this.cards.length) {
+        return
+      }
       this.counter--
       this.applyTranslate()
     })
@@ -39,6 +43,7 @@ export default class Carousel {
   }
 
   clean() {
+    console.log("cards length" + this.cards.length)
     this.cards.length = 0
     while (this.carouselWindow.hasChildNodes()) {
       this.carouselWindow.removeChild(this.carouselWindow.firstChild)
@@ -46,10 +51,6 @@ export default class Carousel {
   }
 
   applyTranslate() {
-    if (this.counter + 4 === this.cards.length || this.counter < 0) {
-      this.counter = 0
-      return
-    }
     this.cards.forEach((card) => {
       const translate = `${246 * this.counter}px`
       card.getView().style.transform = `translate(${translate},0)`
