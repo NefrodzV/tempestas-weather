@@ -297,6 +297,7 @@ main {
 }
 
 .forecast-card {
+  transition: all 1s ease;
   margin: 1% 0px;
   font-weight: bold;
   color: var(--clr-light);
