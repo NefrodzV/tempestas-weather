@@ -4,30 +4,33 @@ import { formatEpochTime, formatWeatherChance } from "./utils/Utils"
 
 export default class Carousel {
   constructor(carouselElement) {
+    this.counter = 0
     this.cards = []
     this.carousel = carouselElement
     this.leftButton = carouselElement.children[0]
+    this.leftButton.addEventListener("click", () => {
+      this.counter++
+      this.applyTranslate()
+    })
     this.carouselWindow = carouselElement.children[1]
     this.rightButton = carouselElement.children[2]
+    this.rightButton.addEventListener("click", () => {
+      this.counter--
+      this.applyTranslate()
+    })
     ForecastObserver.subscribe(this.update.bind(this))
   }
   update(data) {
     this.clean()
-    console.log(data)
     const weatherByHour = data.weatherByHour
-    console.log(weatherByHour)
     if (weatherByHour.length === 0) {
       console.log("Error in data show error")
-
       return
     }
 
-    console.log(this.carouselWindow)
-    console.log(this.carousel)
     weatherByHour.forEach((hourlyWeather) => {
       const card = new Card(hourlyWeather)
-      console.log(card)
-      this.carouselWindow.appendChild(card.getView())
+      this.cards.push(card)
       this.appendCard(card)
     })
   }
@@ -36,9 +39,21 @@ export default class Carousel {
   }
 
   clean() {
+    this.cards.length = 0
     while (this.carouselWindow.hasChildNodes()) {
       this.carouselWindow.removeChild(this.carouselWindow.firstChild)
     }
+  }
+
+  applyTranslate() {
+    if (this.counter + 4 === this.cards.length || counter < 0) {
+      this.counter = 0
+      return
+    }
+    this.cards.forEach((card) => {
+      const translate = `${246 * this.counter}px`
+      card.getView().style.transform = `translate(${translate},0)`
+    })
   }
 }
 
