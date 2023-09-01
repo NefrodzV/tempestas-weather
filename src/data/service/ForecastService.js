@@ -2,29 +2,34 @@ import {
   getCurrentWeatherFromJson,
   getForecastFromJson,
 } from "../../utils/Utils"
-import { ForecastObserver } from "../../observers"
+import { ForecastObserver, SearchErrorObserver } from "../../observers"
 
 export const ForecastService = (function createForecastService() {
   const KEY = "186407c1fe2c47229a5131447231908"
 
   async function getForecast(city) {
     const forecastUrl = `http://api.weatherapi.com/v1/forecast.json?key=${KEY}&q=${city}&days=3&aqi=no&alerts=no`
-    const response = await fetch(forecastUrl, { mode: "cors" })
-    response
-      .json()
+    await fetch(forecastUrl, { mode: "cors" })
+      .then((response) => {
+        if (response.ok) {
+          return response.json()
+        }
+        //This will make the next then() run reject callback
+        throw new Error("Https error! status: " + response.status)
+      })
       .then(
-        (response) => {
+        function onSuccess(response) {
           const ForecastModel = getForecastFromJson(response)
           ForecastObserver.notify(ForecastModel)
           console.log(ForecastModel)
+          console.log(response)
         },
-        (reject) => {
-          console.log("Reject" + reject)
+        function onReject(reject) {
+          console.log("Promise rejected")
+          console.log(reject)
+          SearchErrorObserver.notify()
         }
       )
-      .catch((err) => {
-        console.error(err)
-      })
   }
 
   return {
