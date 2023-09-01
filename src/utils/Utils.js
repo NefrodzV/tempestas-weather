@@ -1,10 +1,9 @@
-import { format } from "date-fns"
+import { fromUnixTime, intlFormat } from "date-fns"
 import CurrentWeatherModel from "../data/model/CurrentWeatherModel"
 import DailyWeatherModel from "../data/model/DailyWeatherModel"
 import ForecastModel from "../data/model/ForecastModel"
 import HourlyWeatherModel from "../data/model/HourlyWeatherModel"
 import LocationModel from "../data/model/LocationModel.js"
-import Strings from "../res/Strings.js"
 
 // Utility functions
 const getElement = (selector) => {
@@ -51,7 +50,7 @@ const getCurrentWeatherFromJson = (response) => {
   let sunrise = null
   let sunset = null
 
-  if (!response.forecast.forecastday.length === 0) {
+  if (response.forecast.forecastday.length != 0) {
     sunrise = response.forecast.forecastday[0].astro.sunrise
     sunset = response.forecast.forecastday[0].astro.sunset
   }
@@ -99,7 +98,6 @@ const getWeatherByDaysFromJson = (response) => {
 const getHourlyWeatherFromJson = (response) => {
   const hourlyWeatherModels = []
   const forecastDays = response.forecast.forecastday
-  console.log(forecastDays)
   if (forecastDays.length === 0) {
     return hourlyWeatherModels
   }
@@ -128,7 +126,6 @@ const getForecastFromJson = (response) => {
   const CurrentWeatherModel = getCurrentWeatherFromJson(response)
   const dailyWeatherModels = getWeatherByDaysFromJson(response)
   const hourlyWeatherModels = getHourlyWeatherFromJson(response)
-  console.log(hourlyWeatherModels)
   return new ForecastModel(
     LocationModel,
     CurrentWeatherModel,
@@ -143,12 +140,17 @@ const formatWeatherChance = (rainChance, snowChance) => {
   return rainChance > snowChance ? rainChanceFormat : snowChanceFormat
 }
 
+// Need to get the timezone from the server and add it here
 const formatEpochTime = (epochValue) => {
-  const time = new Date(epochValue * 1000)
-  // Returns hour and am or pm
-  const formattedTime = format(time, "h a")
+  const time = fromUnixTime(epochValue)
 
-  return formattedTime
+  const formatted = intlFormat(time, {
+    hour: "numeric",
+    hour12: true,
+    timeZone: "Asia/Tokyo",
+  })
+
+  return formatted
 }
 export {
   getElement,
