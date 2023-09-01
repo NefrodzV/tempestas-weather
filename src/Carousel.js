@@ -43,7 +43,7 @@ export default class Carousel {
   }
 
   clean() {
-    console.log("cards length" + this.cards.length)
+    this.counter = 0
     this.cards.length = 0
     while (this.carouselWindow.hasChildNodes()) {
       this.carouselWindow.removeChild(this.carouselWindow.firstChild)
