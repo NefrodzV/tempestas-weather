@@ -15,7 +15,7 @@ import {
   loadImage,
   showErrorMessage,
 } from "./utils/Utils"
-import { ForecastObserver } from "./observers"
+import { ForecastObserver, SearchErrorObserver } from "./observers"
 import { ForecastService } from "./data/service/ForecastService"
 import { Strings } from "./res/Strings"
 import { WeatherConditions } from "./data/model/WeatherConditions"
@@ -116,6 +116,11 @@ const updateWeatherDescriptions = (data) => {
   sunsetPara.textContent = data.currentWeather.sunset
 }
 
+const showSearchError = () => {
+  const searchInput = getElement("#search")
+  showErrorMessage(searchInput, "Could not find a match in the server")
+}
+
 // Main
 loadTabIcon()
 loadDefaultImages()
@@ -131,3 +136,4 @@ const carousel = new Carousel(carouselElement)
 // Setting my observers
 ForecastObserver.subscribe(updateLocationWeather)
 ForecastObserver.subscribe(updateWeatherDescriptions)
+SearchErrorObserver.subscribe(showSearchError)
