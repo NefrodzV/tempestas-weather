@@ -1,6 +1,6 @@
 import { ForecastObserver } from "./observers"
 import RainPercentIcon from "../src/assets/icons/icon-rain-percent.svg"
-import { formatWeatherChance } from "./utils/Utils"
+import { formatEpochTime, formatWeatherChance } from "./utils/Utils"
 
 export default class Carousel {
   constructor(carouselElement) {
@@ -15,8 +15,10 @@ export default class Carousel {
     this.clean()
     console.log(data)
     const weatherByHour = data.weatherByHour
+    console.log(weatherByHour)
     if (weatherByHour.length === 0) {
       console.log("Error in data show error")
+
       return
     }
 
@@ -47,7 +49,7 @@ class Card {
 
     this.title = document.createElement("p")
     this.title.id = "forecast-title"
-    this.title.textContent = data.time
+    this.title.textContent = formatEpochTime(data.epocTime)
 
     this.image = document.createElement("img")
     this.image.id = "forecast-image"
