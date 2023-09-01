@@ -70,10 +70,11 @@ const getCurrentWeatherFromJson = (response) => {
 const getLocationFromJson = (response) => {
   const name = response.location.name
   const epocLocalTime = response.location.localtime_epoch
-  return new LocationModel(name, epocLocalTime)
+  const timeZone = response.location.tz_id
+  return new LocationModel(name, epocLocalTime, timeZone)
 }
 
-const getWeatherByDaysFromJson = (response) => {
+const getWeatherByDaysFromJson = (response, timeZone) => {
   const dailyWeatherModels = []
   const forecastDays = response.forecast.forecastday
 
@@ -82,6 +83,7 @@ const getWeatherByDaysFromJson = (response) => {
   }
   forecastDays.forEach((element) => {
     const dailyWeatherModel = new DailyWeatherModel(
+      timeZone,
       element.date_epoch,
       element.day.avgtemp_f,
       element.day.condition.code,
@@ -95,7 +97,7 @@ const getWeatherByDaysFromJson = (response) => {
 
 // This will probably need an update only get the hourly weather from one day
 // and if its 11pm or more it doesnt return anything
-const getHourlyWeatherFromJson = (response) => {
+const getHourlyWeatherFromJson = (response, timeZone) => {
   const hourlyWeatherModels = []
   const forecastDays = response.forecast.forecastday
   if (forecastDays.length === 0) {
@@ -107,9 +109,9 @@ const getHourlyWeatherFromJson = (response) => {
   weatherByHours.forEach((hourlyWeather) => {
     if (hourlyWeather.time_epoch > localTimeEpoch) {
       const hourlyWeatherModel = new HourlyWeatherModel(
+        timeZone,
         hourlyWeather.time_epoch,
         hourlyWeather.is_day,
-        hourlyWeather.time,
         hourlyWeather.condition.code,
         hourlyWeather.temp_f,
         hourlyWeather.chance_of_rain,
@@ -124,8 +126,14 @@ const getHourlyWeatherFromJson = (response) => {
 const getForecastFromJson = (response) => {
   const LocationModel = getLocationFromJson(response)
   const CurrentWeatherModel = getCurrentWeatherFromJson(response)
-  const dailyWeatherModels = getWeatherByDaysFromJson(response)
-  const hourlyWeatherModels = getHourlyWeatherFromJson(response)
+  const dailyWeatherModels = getWeatherByDaysFromJson(
+    response,
+    LocationModel.timeZone
+  )
+  const hourlyWeatherModels = getHourlyWeatherFromJson(
+    response,
+    LocationModel.timeZone
+  )
   return new ForecastModel(
     LocationModel,
     CurrentWeatherModel,
@@ -141,13 +149,13 @@ const formatWeatherChance = (rainChance, snowChance) => {
 }
 
 // Need to get the timezone from the server and add it here
-const formatEpochTime = (epochValue) => {
+const formatEpochTime = (epochValue, timeZone) => {
   const time = fromUnixTime(epochValue)
 
   const formatted = intlFormat(time, {
     hour: "numeric",
     hour12: true,
-    timeZone: "Asia/Tokyo",
+    timeZone,
   })
 
   return formatted
