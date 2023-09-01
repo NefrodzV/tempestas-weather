@@ -46,7 +46,7 @@ export default class Carousel {
   }
 
   applyTranslate() {
-    if (this.counter + 4 === this.cards.length || counter < 0) {
+    if (this.counter + 4 === this.cards.length || this.counter < 0) {
       this.counter = 0
       return
     }
