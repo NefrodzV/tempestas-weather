@@ -65,7 +65,7 @@ class Card {
 
     this.title = document.createElement("p")
     this.title.id = "forecast-title"
-    this.title.textContent = formatEpochTime(data.epocTime)
+    this.title.textContent = data.time
 
     this.image = document.createElement("img")
     this.image.id = "forecast-image"
