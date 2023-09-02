@@ -1,7 +1,4 @@
-import {
-  getCurrentWeatherFromJson,
-  getForecastFromJson,
-} from "../../utils/Utils"
+import { getForecastFromJson } from "../../utils/Utils"
 import { ForecastObserver, SearchErrorObserver } from "../../observers"
 
 export const ForecastService = (function createForecastService() {
