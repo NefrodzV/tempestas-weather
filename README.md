@@ -16,7 +16,7 @@ Weather page to practice Javascript Promises using the Fetch API and the Observe
 - Animate the loading state
 - Register the last search and load that data on page entry
 - Daily forecast
-- Change the background depending if its day or night
+- Change the background colors depending if its day or night
 
 ## Built With
 
