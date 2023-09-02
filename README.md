@@ -12,8 +12,8 @@ Weather page to practice Javascript Promises using the Fetch API.
 
 ## Future Updates
 
-- Animations to the components
-- Animation for the loading state
+- Animate the components
+- Animate the loading state
 - Register the last search and load that data on page entry
 - Daily forecast
 - Change the background depending if its day or night
