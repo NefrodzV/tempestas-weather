@@ -6,7 +6,7 @@ Weather page to practice Javascript Promises using the Fetch API and the Observe
 
 ## Features
 
-- Search the weather forecast of the location and display its current weather and its current date hourly forecast
+- Search the weather forecast of the location and display its current weather and its current day hourly forecast
 - Show weather state with the correct icons and description
 - Show the correct time with its respective timezone
 
