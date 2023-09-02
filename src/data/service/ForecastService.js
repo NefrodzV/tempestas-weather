@@ -8,7 +8,7 @@ export const ForecastService = (function createForecastService() {
   const KEY = "186407c1fe2c47229a5131447231908"
 
   async function getForecast(city) {
-    const forecastUrl = `http://api.weatherapi.com/v1/forecast.json?key=${KEY}&q=${city}&days=3&aqi=no&alerts=no`
+    const forecastUrl = `https://api.weatherapi.com/v1/forecast.json?key=${KEY}&q=${city}&days=3&aqi=no&alerts=no`
     await fetch(forecastUrl, { mode: "cors" })
       .then((response) => {
         if (response.ok) {
