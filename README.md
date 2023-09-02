@@ -2,13 +2,13 @@
 
 ## Weather App
 
-Weather page to practice Javascript Promises using the Fetch API.
+Weather page to practice Javascript Promises using the Fetch API and the Observer Pattern.
 
 ## Features
 
-- Search the forecast of the location and display its current weather and its current date hourly forecast
+- Search the weather forecast of the location and display its current weather and its current date hourly forecast
 - Show weather state with the correct icons and description
-- Show the correct date with its respective timezone
+- Show the correct time with its respective timezone
 
 ## Future Updates
 
